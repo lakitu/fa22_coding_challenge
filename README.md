@@ -29,10 +29,10 @@ Without further ado, please complete the following (note, appropriate places for
 
 - In your terminal run 'npm i axios'
 
-- Create the update (PUT request) & delete (DELETE request) functions in services/taskServices.js
+- Create the update (PUT request) & delete (DELETE request) functions in services/taskServices.ts
 
 - Create update (PUT request) & delete (DELETE request) operations (using the previous 2 functions)
 
-- Create ‘CreateTask’ component (this should make a POST request, hence using the create operation already implemented in services/taskServices.js)
+- Create ‘CreateTask’ component (this should make a POST request, hence using the create operation already implemented in services/taskServices.ts)
 
 Please, provide us access (hack4impact-bu) when you are finished in order to review your repository. Feel free to change the design if you’d like or host it if you'd like (bonus points!). We look forward to your submission!
