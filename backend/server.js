@@ -19,14 +19,14 @@ const server = app.listen(port, () => console.log(`Listening on port ${port}...`
 
 const io = new socket.Server(server, {
   cors: {
-    origin: "localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
-  }
+  },
+  withCredentials: false,
 });
 
 Task.watch().
   on('change', data => {
-    console.log(data);
-    io.emit("db change", data, data.fullDocument, data.documentKey);
+    io.emit("db change", data.operationType);
   }
 );

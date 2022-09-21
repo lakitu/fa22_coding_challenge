@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Task from "./Task";
 import CreateTask from "./CreateTask";
-import { getTasks } from "../services/taskServices";
+import { fetchTasks } from "../services/taskServices";
 import TaskInterface from "../../interfaces/TaskInterface";
-import { io } from "socket.io-client"
+import io  from "socket.io-client"
 
 const TaskList = () => {
   const [tasks, setTasks] = useState<Array<TaskInterface>>([
@@ -14,21 +14,20 @@ const TaskList = () => {
   const [updatingId, setUpdatingId] = useState("");
 
   useEffect(() => {
-    const getTasksSubroutine = () => {
-      getTasks()
+    const getTasks = () => {
+      fetchTasks()
         .then((dbData) => {
           let {data} = dbData;
           setTasks(data);
         })
         .catch(err => console.log(err));
     }
-    getTasksSubroutine();
+    getTasks();
 
-    const socket = io("http://localhost:8080", {
-      withCredentials: true,
-    });
-    socket.on("db change", () => {
-      getTasksSubroutine();
+    const socket = io("http://localhost:8080");
+    socket.on("db change", (data) => {
+      console.log(`DB has ${data} an object`);
+      getTasks();
     });
   }, [updatingId]);
 

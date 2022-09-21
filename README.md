@@ -1,38 +1,23 @@
-Hey!
+# Krishin Wadhwani hack4Impact Coding Challenge
 
-Thanks for your interest in joining Hack4Impact BU! We require prospective Impact team members to complete this coding challenge for two reasons: 1) So they have a basic understanding of some possible obstacles they will face when working on one of our partner’s projects and 2) to see if the Impact Team is currently the right place for you.
+## Project Requirements
 
-As much as this is an examination to join the Impact Team, this in turn assesses your current abilities as well. If you find this challenge a bit too difficult or you would like to have more exposure to these technologies & those similar feel free to contact us at bostonuniversity@hack4impact.org and express interest in joining the Junior Development Team.
+- Connected server to remote mongodb database
+- Created Task schema with mongoose
+- Created /put and /delete routes
+- Linked CreateTask to the /create route
+- Created UI for updating and deleting tasks
+- Linked update and delete to server routes
 
-Without further ado, please complete the following (note, appropriate places for these actions items to be completed will be denoted with comments in the code):
+## Additional Changes
 
-1. Preliminary:
-
-- create your own git repository
-- fork this repository and connect to your remote repo
-
-2. In the backend directory:
-
-- In your terminal run 'npm init -y; npm install nodemon -g; npm install cors mongoose express'
-
-  NOTE: after this, you can run 'npx nodemon server' in the terminal to run the server when you please. nodemon allows us to run the server and concurrently update it when we save our 'backend' directory files.
-
-- Initialize the Express app
-
-- Create a database on MongoDB & connect it to your application
-
-- Create a ‘task’ schema (‘taskSchema’) with a 'String' data type & make it required.
-
-- Create PUT (update operation) & DELETE (delete operation) request routes
-
-3. In the frontend directory:
-
-- In your terminal run 'npm i axios'
-
-- Create the update (PUT request) & delete (DELETE request) functions in services/taskServices.ts
-
-- Create update (PUT request) & delete (DELETE request) operations (using the previous 2 functions)
-
-- Create ‘CreateTask’ component (this should make a POST request, hence using the create operation already implemented in services/taskServices.ts)
-
-Please, provide us access (hack4impact-bu) when you are finished in order to review your repository. Feel free to change the design if you’d like or host it if you'd like (bonus points!). We look forward to your submission!
+- Converted the React code to Typescript
+  - Javascript was giving me a headache; Typescript made my life a bit easier
+- Added a description to each task
+  - Made descriptions an optional field in the Task schema
+  - Displayed in UI using tooltips
+- Removed React Router and made the application a single page
+- Set up socket.io to handle updates to the db
+  - Previously, updates were handled by a ```useEffect``` loop which accessed the "/" route constantly
+  - This caused slower performance and excess power drain
+  - Now, the server listens for changes using ```Task.watch()``` and emits an event when the db changes

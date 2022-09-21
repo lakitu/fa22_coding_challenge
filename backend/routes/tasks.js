@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/put", async (req, res) => {
-  console.log("here");
   try {
     const task = await Task.findByIdAndUpdate(req.body._id, req.body, {new: true});
     res.send(task);

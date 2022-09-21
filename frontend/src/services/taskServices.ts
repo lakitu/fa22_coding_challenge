@@ -2,7 +2,7 @@ import axios from "axios";
 import TaskInterface from "../../interfaces/TaskInterface";
 const apiUrl = "http://localhost:8080/api/tasks";
 
-export function getTasks() {
+export function fetchTasks() {
   return axios.get(apiUrl);
 }
 
